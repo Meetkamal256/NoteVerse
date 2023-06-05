@@ -10,7 +10,7 @@ initial-scale=1">
 head; any other head content must come *after* these tags
 -->
     <title>
-        my notes
+        main page
     </title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,20 +38,25 @@ query.min.js">
 individual files as needed -->
     <script src="js/bootstrap.min.js">
     </script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat&family=Recursive&display=swap" rel="stylesheet">
     <style>
         .container {
             margin-top: 125px;
         }
         
-        #notepad, #allNote, #done{
+        /* #notepad,
+        #allNote,
+        #done {
             display: none;
         }
-        
-        .buttons{
+         */
+        .buttons {
             margin-bottom: 16px;
         }
         
-        textarea{
+        textarea {
             width: 100%;
             max-width: 100%;
             font-size: 20px;
@@ -113,109 +118,6 @@ individual files as needed -->
             </div>
         </div>
     </div>
-    
-    < <!-- signup form -->
-        <form method="post" id="signupForm">
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Sign up today and start using notesVerse app!</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Username">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="password1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password1" placeholder="Choose a password">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="password2" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" id="password2" placeholder="Confirm password">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        
-        <!-- Login form -->
-        <form method="post" id="loginForm">
-            <div class="modal fade" id="secondModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Login</h4>
-                            <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-                        
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group mb-3">
-                                <label for="loginEmail"></label>
-                                <input type="email" name="loginEmail" id="loginEmail" placeholder="Email" class="form-control" maxlength="40">
-                                <label for="loginPassword"></label>
-                                <input type="text" name="loginPassword" placeholder="Password" class="form-control" maxlength="40">
-                            </div>
-                            <div class="checkbox">
-                                <label for="rememberMe">
-                                    <input type="checkbox" name="rememberMe" id="rememberMe">
-                                    Remember me
-                                </label>
-                                <a class="float-end" href="#thirdModal" data-bs-dismiss="modal" data-bs-toggle="modal">Forgot password?</a>
-                            </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" data-bs-target="#myModal" data-bs-toggle="modal">Register</button>
-                            <div>
-                                <button type="button" class="btn btn-success">Login</button>
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        
-        <!-- forgot password form -->
-        <form method="post" class="form-group">
-            <div class="modal fade" id="thirdModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Forgot password? Enter your email address</h4>
-                            <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <label for="forgotmeEmail"></label>
-                            <input type="email" name="forgotmeEmail" id="forgotmeEmail" placeholder="Email" class="form-control">
-                        </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" data-bs-target="#myModal" data-bs-toggle="modal">Register</button>
-                            <div>
-                                <button type="button" class="btn btn-success">Submit</button>
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        
-        
-
         <!-- footer -->
         <div class="footer">
             <div class="container-fluid">Copyright &copy; <?php $today = date("Y");

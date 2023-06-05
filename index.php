@@ -12,21 +12,10 @@ head; any other head content must come *after* these tags
     <title>
         note app
     </title>
+    
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of
-HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the
-page via file:// -->
-    <!--[if lt IE 9]>
-<script
-src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.
-js">
-</script><script
-src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js">
-</script>
-<![endif]-->
     
     <!-- jQuery (necessary for Bootstrap's JavaScript
 plugins) -->
@@ -68,7 +57,7 @@ individual files as needed -->
     
     <!-- jumbotron -->
     <div class="jumbotron" id="myContainer">
-        <h1>Welcome to notesVerse</h1>
+        <h1 class="heading">Welcome to notesVerse</h1>
         <p>Your Ultimate online notes platform</p>
         <p>Create, edit, and manage your notes easily with our intuitive app.</p>
         <p>Access your notes from anywhere, anytime</p>
@@ -174,9 +163,7 @@ individual files as needed -->
                 </div>
             </div>
         </form>
-        
-        
-        
+
         <!-- footer -->
         <div class="footer">
             <div class="container-fluid">Copyright &copy; <?php $today = date("Y");
