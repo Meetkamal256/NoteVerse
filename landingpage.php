@@ -58,13 +58,13 @@ individual files as needed -->
     <!-- jumbotron -->
     <div class="jumbotron" id="myContainer">
         <h1 class="heading">Welcome to notesVerse</h1>
-        <p>Your Ultimate online notes platform</p>
-        <p>Create, edit, and manage your notes easily with our intuitive app.</p>
-        <p>Access your notes from anywhere, anytime</p>
+        <p class="sub-heading">Your Ultimate online notes platform</p>
+        <p class="sub-heading">Create, edit, and manage your notes easily with our intuitive app.</p>
+        <p class="sub-heading">Access your notes from anywhere, anytime</p>
         <a class="btn btn-primary btn-lg" href="#" role="button" data-bs-target="#myModal" data-bs-toggle="modal">Signup- Its free</a>
     </div>
     
-    < <!-- signup form -->
+     <!-- signup form -->
         <form method="post" id="signupForm">
             <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
                 <div class="modal-dialog">
@@ -75,27 +75,32 @@ individual files as needed -->
                         </div>
                         <div class="modal-body">
                             <form>
-                                <div class="form-group mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address">
-                                </div>
+                                <?php
+                                include("signup.php");
+                                ?>
+                                
+                                
                                 <div class="form-group mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Username">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="password1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password1" placeholder="Choose a password">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Choose a password">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="password2" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" id="password2" placeholder="Confirm password">
+                                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password">
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Send</button>
+                            <button type="submit" class="btn btn-primary">Signup</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -138,7 +143,7 @@ individual files as needed -->
                 </div>
             </div>
         </form>
-        
+
         <!-- forgot password form -->
         <form method="post" class="form-group">
             <div class="modal fade" id="thirdModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
