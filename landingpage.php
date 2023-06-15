@@ -14,7 +14,7 @@ head; any other head content must come *after* these tags
     </title>
     
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     
     <!-- jQuery (necessary for Bootstrap's JavaScript
@@ -25,8 +25,7 @@ query.min.js">
     
     <!-- Include all compiled plugins (below), or include
 individual files as needed -->
-    <script src="js/bootstrap.min.js">
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -143,7 +142,7 @@ individual files as needed -->
                 </div>
             </div>
         </form>
-
+        
         <!-- forgot password form -->
         <form method="post" class="form-group">
             <div class="modal fade" id="thirdModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
@@ -168,7 +167,7 @@ individual files as needed -->
                 </div>
             </div>
         </form>
-
+        
         <!-- footer -->
         <div class="footer">
             <div class="container-fluid">Copyright &copy; <?php $today = date("Y");

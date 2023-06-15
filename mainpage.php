@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>main page</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat&family=Recursive&display=swap" rel="stylesheet">
@@ -14,15 +14,15 @@
         .container {
             margin-top: 100px;
         }
-
+        
         #allNoteSection {
-            /* display: none; */
+            display: none;
         }
-
+        
         .buttons {
             margin-bottom: 16px;
         }
-
+        
         textarea {
             width: 100%;
             max-width: 100%;
@@ -35,32 +35,32 @@
             background-color: white;
             background-image: url(images/pexels-madison-inouye-1101122.jpg);
         }
-
+        
         .note {
             margin-bottom: 20px;
             border: 1px solid #ccc;
             padding: 10px;
             background-color: #f9f9f9;
         }
-
+        
         .no-notes {
             margin-bottom: 20px;
             color: #888;
             font-style: italic;
         }
-
+        
         .note {
             border: 2px solid #ccc;
             background-color: #f9f9f9;
             border-radius: 20px;
         }
-
+        
         .note-datetime {
             font-size: 15px;
             color: #888;
             margin-top: 5px;
         }
-
+        
         .no-notes {
             color: #888;
             font-style: italic;
@@ -71,14 +71,14 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
-        <img src="icons/logo1.png" alt="Logo" style="width: 80px; height:60px">
+        <img src="icons/logo.png" alt="Logo" style="width: 80px; height:60px">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Help</a>
+                    <!-- <a class="nav-link" href="#">Help</a> -->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact us</a>
@@ -122,8 +122,8 @@
         <input type="hidden" name="updatedContent" id="updatedContent">
     </form>
     
-
-
+    
+    
     <!-- Delete note form -->
     <form id="deleteNoteForm" method="POST">
         <input type="hidden" name="noteId" id="deleteNoteId">
@@ -138,11 +138,13 @@
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             // Hide the allNote section initially
             $('#allNoteSection').hide();
+            $('#done').hide();
+            
             
             // Add notes button click event
             $('#addNoteBtn').click(function() {
@@ -160,21 +162,21 @@
                 // Submit the form manually
                 $('#addNoteForm').submit();
             });
-
+            
             // All notes button click event
             $('#allNoteBtn').click(function() {
                 // Hide the notepad, addNoteBtn
                 $('#notepad').hide();
                 $('#addNoteBtn').hide();
                 $('#done').show();
-
+                
                 // Show the allNoteSection
                 $('#allNoteSection').show();
-
+                
                 // Show the edit button
                 $('.edit-note').show();
             });
-
+            
             // Done button click event
             $('#done').click(function() {
                 // Show the notepad, addNoteBtn, and hide the allNoteSection
@@ -205,7 +207,7 @@
                 // Set the updated content in a hidden input field
                 $('#updateNoteId').val(noteId);
                 $('#updatedContent').val(updatedContent);
-
+                
                 // Submit the form to update the note
                 $('#updateNoteForm').submit();
             });

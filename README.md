@@ -14,7 +14,7 @@ The Online Note Web Application is a simple web-based application that allows us
 ## Technologies Used
 
 - Front-end: HTML, CSS, Bootstrap
-- Back-end: PHP
+- Back-end: PHP, Javascript
 - Database: MYSQL
 
 ## Installation
