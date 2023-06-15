@@ -1,10 +1,11 @@
 <?php
-// Connect to the database
-$host = "localhost";
-$username = "root";
-$password = "";
-$db_name = "notesVerse";
-$connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
+ session_start();
+ // Connect to the database
+ $host = "localhost";
+ $username = "id20917606_root";
+ $password = "Kamal256@";
+ $db_name = "id20917606_noteverse";
+ $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
 
 // Check if the note ID is provided
 if (isset($_GET['note_id'])) {

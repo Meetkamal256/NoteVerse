@@ -3,13 +3,12 @@
 // start session
 session_start();
 
-// $host = "localhost";
-// $username = "root";
-// $password = "";
-// $db_name = "notesVerse";
-// $link = mysqli_connect($host, $username, $password, $db_name) or die("Error: Unable to connect to the database" . mysqli_connect_error());
-// echo "Connected successfully to the database";
-include("connection.php");
+ // Connect to the database
+ $host = "localhost";
+ $username = "id20917606_root";
+ $password = "Kamal256@";
+ $db_name = "id20917606_noteverse";
+ $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
 
 // Define error messages
 $missingUsername = '<p><strong>Please enter a username!</strong></p>';

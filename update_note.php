@@ -1,16 +1,16 @@
 <?php
+ session_start();
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
  
  
- mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
- // Connect to the database
- $host = "localhost";
- $username = "root";
- $password = "";
- $db_name = "notesVerse";
- $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
+  // Connect to the database
+  $host = "localhost";
+  $username = "id20917606_root";
+  $password = "Kamal256@";
+  $db_name = "id20917606_noteverse";
+  $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
 // Retrieve the note ID and updated content from the form
 $noteId = $_POST['noteId'];
 $updatedContent = $_POST['updatedContent'];
@@ -23,7 +23,7 @@ $result = mysqli_query($connection, $query);
 if ($result) {
     // Redirect or perform any other desired action upon successful update
     // For example, you can redirect back to the main page:
-    header("Location: mainpage.php");
+    header("Location: index.php");
     exit();
 } else {
     // Handle the case where the update fails
