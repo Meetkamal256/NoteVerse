@@ -1,6 +1,8 @@
 <?php
-// signup-process.php
+// signup.php
+
 // start session
+session_start();
 
 // Connect to the database
 $host = "localhost";
@@ -46,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
         
-        if (strlen($password) < 6 || !preg_match('/[A-Z]/', $password) || !preg_match('/[0-9]/', $password)) {
+        if (strlen($password) < 8 || !preg_match('/[A-Z]/', $password) || !preg_match('/[0-9]/', $password)) {
             $errors .= $invalidPassword;
         } else {
             // Check password confirmation
@@ -71,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare variables for the query
         $username = mysqli_real_escape_string($link, $username);
         $email = mysqli_real_escape_string($link, $email);
-        $password = mysqli_real_escape_string($link, $password);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         
         // Check if username exists in the users table and print error
         $sql = "SELECT * FROM users WHERE username= '$username'";
@@ -83,33 +85,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $results = mysqli_num_rows($result);
         if ($results) {
-            echo '<div class="alert alert-danger">That username is already registered. Do you want to log in?</div>';
+            echo "<div class='alert alert-danger'>That username is already registered. Do you want to log in?</div>";
             exit;
         }
         
-        // Check if email exists in users table and print error
+        // Check if email exists in the users table and print error
         $sql = "SELECT * FROM users WHERE email= '$email'";
         $result = mysqli_query($link, $sql);
         if (!$result) {
-            echo '<div class="alert alert-danger">Error running the query!</div>';
+            echo "<div class='alert alert-danger'>" . mysqli_error($link) . "</div>";
             exit;
         }
         
         $results = mysqli_num_rows($result);
         if ($results) {
-            echo '<div class="alert alert-danger">That email is already registered. Do you want to log in!</div>';
+            echo "<div class='alert alert-danger'>That email address is already registered. Do you want to log in?</div>";
             exit;
         }
         
-        // Insert user details in users table
-        $sql = "INSERT INTO users(username, email, password) VALUES('$username', '$email', '$password')";
-        $results = mysqli_query($link, $sql);
-        if (!$results) {
-            echo '<div class="alert alert-danger">There was an error inserting the user details in the database</div>';
+        // Insert user details into the users table
+        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+        if (!mysqli_query($link, $sql)) {
+            echo "<div class='alert alert-danger'>Error: " . mysqli_error($link) . "</div>";
             exit;
         }
         
-        echo '<div class="alert alert-success">Registration successful! You can now log in.</div>';
+        // Registration successful message
+        echo "<div class='alert alert-success'>Registration successful! Please log in.</div>";
     }
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -28,7 +27,7 @@ $result = mysqli_query($connection, $query);
 // Check if there are any notes
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $noteId = $row['id'];
+        $noteId = $row['user_id'];
         $noteContent = $row['note'];
         $noteDateTime = $row['time'];
         
