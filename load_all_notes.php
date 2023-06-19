@@ -1,19 +1,28 @@
 <?php
-session_start(); 
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
  
 // Connect to the database
- $host = "localhost";
- $username = "id20917606_root";
- $password = "Kamal256@";
- $db_name = "id20917606_noteverse";
- $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
+$host = "localhost";
+$username = "root";
+$password = "";
+$db_name = "notesVerse";
+$connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
 
-// Fetch all notes from the database
-$query = "SELECT * FROM notes";
+// check if user is logged in
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    echo '<div class="no-notes">You are not logged in.</div>';
+    exit;
+}
+
+// retrieve the email for logged in user
+$userId = $_SESSION['user_id'];
+
+// Fetch notes for the logged in user from the database
+$query = "SELECT * FROM notes WHERE user_id='$userId'";
 $result = mysqli_query($connection, $query);
 
 // Check if there are any notes

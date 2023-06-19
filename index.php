@@ -4,223 +4,176 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>main page</title>
+    <meta name="viewport" content="width=device-width,
+initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the
+head; any other head content must come *after* these tags
+-->
+    <title>
+        note app
+    </title>
+    
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat&family=Recursive&display=swap" rel="stylesheet">
-    <style>
-        .container {
-            margin-top: 100px;
-        }
-        
-        #allNoteSection {
-            display: none;
-        }
-        
-        .buttons {
-            margin-bottom: 16px;
-        }
-        
-        textarea {
-            width: 100%;
-            max-width: 100%;
-            font-size: 20px;
-            line-height: 1.5em;
-            border-left-width: 20px;
-            border-color: #13D4B5;
-            color: #13D4B5;
-            padding: 10px;
-            background-color: white;
-            background-image: url(images/pexels-madison-inouye-1101122.jpg);
-        }
-        
-        .note {
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-        
-        .no-notes {
-            margin-bottom: 20px;
-            color: #888;
-            font-style: italic;
-        }
-        
-        .note {
-            border: 2px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 20px;
-        }
-        
-        .note-datetime {
-            font-size: 15px;
-            color: #888;
-            margin-top: 5px;
-        }
-        
-        .no-notes {
-            color: #888;
-            font-style: italic;
-            margin-top: 10px;
-        }
-    </style>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript
+plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/j
+query.min.js">
+    </script>
+    
+    <!-- Include all compiled plugins (below), or include
+individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
+    <!-- navigation-bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
-        <img src="icons/logo.png" alt="Logo" style="width: 80px; height:60px">
+        <img src="icons/logo1.png" alt="Logo" style="width: 80px; height:60px">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <span class="navbar-toggler-icon"></span>></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <!-- <a class="nav-link" href="#">Help</a> -->
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact us</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">My notes</a>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#secondModal" data-bs-toggle="modal">Login</a>
                 </li>
             </ul>
         </div>
     </nav>
     
-    <div class="container">
-        <div class="row">
-            <div class="offset-md-3 col-md-6">
-                <div class="buttons">
-                    <?php
-                    include("create_note.php");
-                    ?>
-                    <form method="POST" id="addNoteForm">
-                        <input type="hidden" name="form_submitted" value="1">
-                        <button type="button" class="btn btn-info btn-lg" id="addNoteBtn">Add notes</button>
-                        <button type="button" class="btn btn-info btn-lg" id="allNoteBtn">All notes</button>
-                        <button type="button" class="btn btn-success btn-lg float-end" id="done">Done</button>
-                        <div id="notepad">
-                            <textarea name="noteContent" rows="10"></textarea>
+    <!-- jumbotron -->
+    <div class="jumbotron" id="myContainer">
+        <h1 class="heading" style="color: white;">Welcome to notesVerse</h1>
+        <p class="sub-heading">Your Ultimate online notes platform</p>
+        <p class="sub-heading">Create, edit, and manage your notes easily with our intuitive app.</p>
+        <p class="sub-heading">Access your notes from anywhere, anytime</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button" data-bs-target="#myModal" data-bs-toggle="modal">Signup- Its free</a>
+    </div>
+    
+    <!-- signup form -->
+    
+    <form method="post" action="signup.php" id="signupForm">
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sign up today and start using notesVerse app!</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        
+                        <?php include("signup.php");  ?>
+                        <div class="form-group mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                         </div>
-                    </form>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Choose a password">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password2" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password">
+                        </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Signup</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    
+    <!-- Login form -->
+    <form method="post" action="login.php" id="loginForm">
+        <div class="modal fade" id="secondModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Login</h4>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    
+                    </div>
+                    <div class="modal-body">
+                        <?php include("login.php"); ?>
+                        <div class="form-group mb-3">
+                            <label for="loginEmail"></label>
+                            <input type="email" name="loginEmail" id="loginEmail" placeholder="Email" class="form-control" maxlength="40">
+                            <label for="loginPassword"></label>
+                            <input type="password" name="loginPassword" placeholder="Password" class="form-control" maxlength="40">
+                        </div>
+                        <div class="checkbox">
+                            <label for="rememberMe">
+                                <input type="checkbox" name="rememberMe" id="rememberMe">
+                                Remember me
+                            </label>
+                            <a class="float-end" href="#thirdModal" data-bs-dismiss="modal" data-bs-toggle="modal">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" data-bs-target="#myModal" data-bs-toggle="modal">Register</button>
+                        <div>
+                            <button type="submit" class="btn btn-success">Login</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- All notes section -->
-        <div id="allNoteSection">
-            <?php include("load_all_notes.php"); ?>
+    </form>
+    
+    <!-- forgot password form -->
+    <form method="post" class="form-group">
+        <div class="modal fade" id="thirdModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Forgot password? Enter your email address</h4>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="forgotmeEmail"></label>
+                        <input type="email" name="forgotmeEmail" id="forgotmeEmail" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" data-bs-target="#myModal" data-bs-toggle="modal">Register</button>
+                        <div>
+                            <button type="button" class="btn btn-success">Submit</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <!-- Update note form -->
-    <form method="POST" id="updateNoteForm" action="update_note.php">
-        <input type="hidden" name="noteId" id="updateNoteId">
-        <input type="hidden" name="updatedContent" id="updatedContent">
     </form>
     
-    
-    
-    <!-- Delete note form -->
-    <form id="deleteNoteForm" method="POST">
-        <input type="hidden" name="noteId" id="deleteNoteId">
-    </form>
-    <!-- Include delete_note.php -->
-    <?php include("delete_note.php"); ?>
-    
+    <!-- footer -->
     <div class="footer">
-        <div class="container-fluid">
-            Copyright &copy; <?php echo date("Y"); ?>
-        </div>
+        <div class="container-fluid">Copyright &copy; <?php $today = date("Y");
+                                                        echo $today ?></div>
     </div>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Hide the allNote section initially
-            $('#allNoteSection').hide();
-            $('#done').hide();
-            
-            
-            // Add notes button click event
-            $('#addNoteBtn').click(function() {
-                // Check if the note content is empty
-                if ($('textarea[name="noteContent"]').val().trim() === '') {
-                    alert('Please enter note content');
-                    return;
-                }
-                
-                // Hide the notepad, addNoteBtn, and show the allNoteBtn
-                $('#notepad').hide();
-                $('#addNoteBtn').hide();
-                $('#allNoteBtn').show();
-                
-                // Submit the form manually
-                $('#addNoteForm').submit();
-            });
-            
-            // All notes button click event
-            $('#allNoteBtn').click(function() {
-                // Hide the notepad, addNoteBtn
-                $('#notepad').hide();
-                $('#addNoteBtn').hide();
-                $('#done').show();
-                
-                // Show the allNoteSection
-                $('#allNoteSection').show();
-                
-                // Show the edit button
-                $('.edit-note').show();
-            });
-            
-            // Done button click event
-            $('#done').click(function() {
-                // Show the notepad, addNoteBtn, and hide the allNoteSection
-                $('#notepad').show();
-                $('#addNoteBtn').show();
-                $('#edit').hide();
-                $('#done').hide();
-                $('#allNoteSection').hide();
-            });
-            
-            // Edit button click event
-            $(document).on('click', '.edit-note', function() {
-                var noteId = $(this).attr('data-note-id');
-                var noteContent = $(this).siblings('.note-content').text();
-                
-                // Replace the note content with a textarea for editing
-                $(this).siblings('.note-content').html('<textarea class="edit-note-content">' + noteContent + '</textarea>');
-                $(this).text('Update');
-                $(this).removeClass('edit-note');
-                $(this).addClass('update-note');
-            });
-            
-            // Update note button click event
-            $(document).on('click', '.update-note', function() {
-                var noteId = $(this).attr('data-note-id');
-                var updatedContent = $(this).siblings('.note-content').children('.edit-note-content').val();
-                
-                // Set the updated content in a hidden input field
-                $('#updateNoteId').val(noteId);
-                $('#updatedContent').val(updatedContent);
-                
-                // Submit the form to update the note
-                $('#updateNoteForm').submit();
-            });
-            // Delete note button click event
-            $(document).on('click', '.delete-note', function() {
-                var noteId = $(this).data('note-id');
-                if (confirm('Are you sure you want to delete this note?')) {
-                    $('#deleteNoteId').val(noteId);
-                    $('#deleteNoteForm').submit();
-                }
-            });
-        });
-    </script>
+
+
 
 
 

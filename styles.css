@@ -16,21 +16,21 @@ h1{
 .sub-heading{
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.5  rem;
+  color: white;
 }
 
 /* background image */
 body{
-  background-image: url(images/pexels-magda-ehlers-4097160.jpg);
-  /* background-color: gray; */
+  /* background-image: url(images/pexels-magda-ehlers-4097160.jpg); */
+  background-color: rgb(29, 32, 43);
   background-size: cover;
-  background-attachment: fixed;
   
 
 }
 
 /* navigation bar */
 .bg-custom, .footer {
-  background-color: #008bad;
+  background-color: rgb(24, 18, 18);
 }
 /* jumbotron style*/
 .jumbotron {

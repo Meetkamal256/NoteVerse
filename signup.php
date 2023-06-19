@@ -1,14 +1,13 @@
 <?php
 // signup-process.php
 // start session
-session_start();
 
- // Connect to the database
- $host = "localhost";
- $username = "id20917606_root";
- $password = "Kamal256@";
- $db_name = "id20917606_noteverse";
- $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
+// Connect to the database
+$host = "localhost";
+$username = "root";
+$password = "";
+$db_name = "notesVerse";
+$link = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
 
 // Define error messages
 $missingUsername = '<p><strong>Please enter a username!</strong></p>';
@@ -18,7 +17,6 @@ $missingPassword = '<p><strong>Please enter a password!</strong></p>';
 $invalidPassword = '<p><strong>Your password should be at least six characters long and include one capital letter and number!</strong></p>';
 $differentPassword = '<p><strong>Passwords don\'t match!</strong></p>';
 $missingPassword2 = '<p><strong>Please confirm your password!</strong></p>';
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get user inputs
@@ -103,30 +101,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
         
-        // create a unique activation code
-        $activationKey = bin2hex(openssl_random_pseudo_bytes(16));
-        
-        // insert user details and activation code in users tables
-        $sql = "INSERT INTO users(username, email, password, activation) VALUES('$username', '$email', '$password', '$activationKey')";
+        // Insert user details in users table
+        $sql = "INSERT INTO users(username, email, password) VALUES('$username', '$email', '$password')";
         $results = mysqli_query($link, $sql);
         if (!$results) {
             echo '<div class="alert alert-danger">There was an error inserting the user details in the database</div>';
             exit;
         }
         
-        // send the user an email with the link to activate.php with their email and activation code
-        $to = $email;
-        $subject = "Confirm Your Registration";
-        $message = "Please click on this link to activate your account: \n\n";
-        $message .= "http://localhost/activate.php?email=" . urlencode($email) . "&key=$activationKey";
-        $headers = "From: meetkamal256@gmail.com\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-        
-        if (mail($to, $subject, $message, $headers)) {
-            echo '<div class="alert alert-success">Registration successful! Please check your email to activate your account.</div>';
-        } else {
-            echo '<div class="alert alert-danger">There was an error sending the activation email. Please try again.</div>';
-        }
+        echo '<div class="alert alert-success">Registration successful! You can now log in.</div>';
     }
 }
 ?>

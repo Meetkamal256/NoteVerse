@@ -79,17 +79,8 @@ individual files as needed -->
             <span class="navbar-toggler-icon"></span>></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="note">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Help</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact us</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">My notes</a>
+            <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
