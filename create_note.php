@@ -1,5 +1,5 @@
 <?php
-
+ 
  // Connect to the database
  $host = "localhost";
  $username = "root";

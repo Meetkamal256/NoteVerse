@@ -28,15 +28,15 @@ $username = $_SESSION['username'];
         .container {
             margin-top: 100px;
         }
-        
+
         #allNoteSection {
             display: none;
         }
-        
+
         .buttons {
             margin-bottom: 16px;
         }
-        
+
         textarea {
             width: 100%;
             max-width: 100%;
@@ -49,32 +49,32 @@ $username = $_SESSION['username'];
             background-color: white;
             background-image: url(images/pexels-madison-inouye-1101122.jpg);
         }
-        
+
         .note {
             margin-bottom: 20px;
             border: 1px solid #ccc;
             padding: 10px;
             background-color: #f9f9f9;
         }
-        
+
         .no-notes {
             margin-bottom: 20px;
             color: #888;
             font-style: italic;
         }
-        
+
         .note {
             border: 2px solid #ccc;
             background-color: #f9f9f9;
             border-radius: 20px;
         }
-        
+
         .note-datetime {
             font-size: 15px;
             color: #888;
             margin-top: 5px;
         }
-        
+
         .no-notes {
             color: #888;
             font-style: italic;
@@ -114,7 +114,7 @@ $username = $_SESSION['username'];
             </ul>
         </div>
     </nav>
-    
+
     <div class="container">
         <div class="row">
             <div class="offset-md-3 col-md-6">
@@ -132,32 +132,32 @@ $username = $_SESSION['username'];
                 </div>
             </div>
         </div>
-        
+
         <!-- All notes section -->
         <div id="allNoteSection">
             <?php include("load_all_notes.php"); ?>
         </div>
     </div>
-    
+
     <!-- Update note form -->
     <form method="POST" id="updateNoteForm" action="update_note.php">
         <input type="hidden" name="noteId" id="updateNoteId">
         <input type="hidden" name="updatedContent" id="updatedContent">
     </form>
-    
+
     <!-- Delete note form -->
     <form id="deleteNoteForm" method="POST">
         <input type="hidden" name="noteId" id="deleteNoteId">
     </form>
     <!-- Include delete_note.php -->
     <?php include("delete_note.php"); ?>
-    
+
     <div class="footer">
         <div class="container-fluid">
             <strong class="bg-light">Copyright &copy; <?php echo date("Y"); ?></strong>
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -165,7 +165,7 @@ $username = $_SESSION['username'];
             // Hide the allNote section initially
             $('#allNoteSection').hide();
             $('#done').hide();
-            
+
             // Add notes button click event
             $('#addNoteBtn').click(function() {
                 // Check if the note content is empty
@@ -173,64 +173,76 @@ $username = $_SESSION['username'];
                     alert('Please enter note content');
                     return;
                 }
-                
+
                 // Hide the notepad, addNoteBtn, and show the allNoteBtn
                 $('#notepad').hide();
                 $('#addNoteBtn').hide();
                 $('#allNoteBtn').show();
-                
+
                 // Submit the form manually
                 $('#addNoteForm').submit();
             });
-            
+
             // All notes button click event
             $('#allNoteBtn').click(function() {
                 // Hide the notepad, addNoteBtn
                 $('#notepad').hide();
                 $('#addNoteBtn').hide();
                 $('#done').show();
-                
+
                 // Show the allNoteSection
                 $('#allNoteSection').show();
-                
+
                 // Show the edit button
                 $('.edit-note').show();
             });
-            
+
             // Done button click event
             $('#done').click(function() {
                 // Show the notepad, addNoteBtn
                 $('#notepad').show();
                 $('#addNoteBtn').show();
                 $('#done').hide();
-                
+
                 // Hide the allNoteSection
                 $('#allNoteSection').hide();
-                
+
                 // Hide the edit button
                 $('.edit-note').hide();
             });
-            
-            // Edit note button click event
-            $('.edit-note').click(function() {
-                var noteId = $(this).data('note-id');
-                var noteContent = $(this).closest('.note').find('.note-content').text();
-                
-                // Set the noteId and noteContent in the updateNoteForm
+
+            // Edit button click event
+            $(document).on('click', '.edit-note', function() {
+                var noteId = $(this).attr('data-note-id');
+                var noteContent = $(this).siblings('.note-content').text();
+
+                // Replace the note content with a textarea for editing
+                $(this).siblings('.note-content').html('<textarea class="edit-note-content">' + noteContent + '</textarea>');
+                $(this).text('Update');
+                $(this).removeClass('edit-note');
+                $(this).addClass('update-note');
+            });
+
+            // Update note button click event
+            $(document).on('click', '.update-note', function() {
+                var noteId = $(this).attr('data-note-id');
+                var updatedContent = $(this).siblings('.note-content').children('.edit-note-content').val();
+
+                // Set the updated content in a hidden input field
                 $('#updateNoteId').val(noteId);
-                $('#updatedContent').val(noteContent);
-                
-                // Submit the updateNoteForm
+                $('#updatedContent').val(updatedContent);
+
+                // Submit the form to update the note
                 $('#updateNoteForm').submit();
             });
             
             // Delete note button click event
             $('.delete-note').click(function() {
                 var noteId = $(this).data('note-id');
-                
+
                 // Set the noteId in the deleteNoteForm
                 $('#deleteNoteId').val(noteId);
-                
+
                 // Submit the deleteNoteForm
                 $('#deleteNoteForm').submit();
             });

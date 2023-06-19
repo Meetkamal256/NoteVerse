@@ -1,6 +1,5 @@
 <?php
-// load_all_notes.php
-
+session_start();
 // Connect to the database
 $host = "localhost";
 $username = "root";
@@ -8,16 +7,12 @@ $password = "";
 $db_name = "notesVerse";
 $connection = mysqli_connect($host, $username, $password, $db_name) or die('Database connection error: ' . mysqli_connect_error());
 
-// retrieve the user ID for the logged-in user
+// Retrieve the user ID for the logged-in user
 $userId = $_SESSION['user_id'];
-// Debug: Display the user ID
-echo 'User ID: ' . $userId . '<br>';
 
 // Fetch notes for the logged-in user from the database
 $query = "SELECT * FROM notes WHERE user_id = '$userId'";
 $result = mysqli_query($connection, $query);
-// Debug: Display the number of rows returned
-echo 'Number of rows: ' . mysqli_num_rows($result) . '<br>';
 
 // Check if the query executed successfully
 if (!$result) {
@@ -35,8 +30,15 @@ if (mysqli_num_rows($result) > 0) {
         echo '<div class="note">';
         echo '<div class="note-content">' . $noteContent . '</div>';
         echo '<div class="note-datetime">' . $noteDateTime . '</div>';
-        echo '<button class="edit-note btn btn-primary btn-sm" data-note-id="' . $noteId . '">Edit</button>';
+        echo '<button class="edit-note btn btn-primary btn-sm" data-note-id="' . $noteId . '" data-note-content="' . htmlspecialchars($noteContent) . '">Edit</button>';
         echo '<a href="delete_note.php?note_id=' . $noteId . '" class="delete-note btn btn-danger btn-sm" data-note-id="' . $noteId . '">Delete</a>';
+        
+        // Add the edit note form
+        echo '<div class="edit-note-form" style="display: none;">';
+        echo '<textarea class="note-content-edit">' . $noteContent . '</textarea>';
+        echo '<button class="update-note btn btn-primary btn-sm" data-note-id="' . $noteId . '">Update</button>';
+        echo '</div>';
+        
         echo '</div>';
     }
 } else {
@@ -46,3 +48,4 @@ if (mysqli_num_rows($result) > 0) {
 
 // Close the database connection
 mysqli_close($connection);
+?>
