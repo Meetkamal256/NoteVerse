@@ -2,7 +2,6 @@
 // mainpage.php
 // start session
 session_start();
-
 // Check if the user is not logged in
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header("Location: index.php");
