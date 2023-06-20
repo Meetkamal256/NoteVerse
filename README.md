@@ -26,7 +26,7 @@ The Online Note Web Application is a simple web-based application that allows us
 ## Usage
 Register a new account by providing a unique username and a secure password.
 Log in to your account using your credentials.
-Create new notes by clicking on the "New Note" button and filling in the title and content.
+Create new notes by clicking on the "New Note" button.
 View, edit, or delete your existing notes from the dashboard.
 Log out when you're done using the application.
 
