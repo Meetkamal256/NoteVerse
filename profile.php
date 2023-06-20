@@ -117,7 +117,7 @@ individual files as needed -->
             </div>
         </div>
     </div>
-
+    
     <!-- update username form -->
     <form method="post" id="updateUsernameForm">
         <div class="modal fade" id="updateUsername" tabindex="-1" aria-labelledby="" aria-hidden="true">
@@ -146,7 +146,7 @@ individual files as needed -->
             </div>
         </div>
     </form>
-
+    
     <!-- update email form -->
     <form method="post" id="updateEmailForm">
         <div class="modal fade" id="updateEmail" tabindex="-1" aria-labelledby="" aria-hidden="true">
@@ -197,7 +197,7 @@ individual files as needed -->
                             <label for="password2" class="sr-only"></label>
                             <input type="password" name="password2" id="password2" placeholder="Comfirm Password" class="form-control" maxlength="40">
                         </div>
-
+                    
                     </div>
                     <div class="modal-footer d-flex justify-content-end">
                         <div>

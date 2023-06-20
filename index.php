@@ -12,17 +12,17 @@ head; any other head content must come *after* these tags
     <title>
         note app
     </title>
-    
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- jQuery (necessary for Bootstrap's JavaScript
 plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/j
 query.min.js">
     </script>
-    
+
     <!-- Include all compiled plugins (below), or include
 individual files as needed -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -37,13 +37,10 @@ individual files as needed -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Help</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact us</a>
+                    <a class="nav-link" href="contactus.php">Contact us</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -53,7 +50,7 @@ individual files as needed -->
             </ul>
         </div>
     </nav>
-    
+
     <!-- jumbotron -->
     <div class="jumbotron" id="myContainer">
         <h1 class="heading" style="color: white;">Welcome to notesVerse</h1>
@@ -62,10 +59,10 @@ individual files as needed -->
         <p class="sub-heading">Access your notes from anywhere, anytime</p>
         <a class="btn btn-primary btn-lg" href="#" role="button" data-bs-target="#myModal" data-bs-toggle="modal">Signup- Its free</a>
     </div>
-    
+
     <!-- signup form -->
-    
-    <form method="post" action="signup.php" id="signupForm">
+
+    <form method="post" id="signupForm">
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -73,25 +70,25 @@ individual files as needed -->
                         <h4 class="modal-title">Sign up today and start using notesVerse app!</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    
+
                     <div class="modal-body">
-                        
+
                         <?php include("signup.php");  ?>
                         <div class="form-group mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php if (isset($_POST["username"])) echo $_POST["username"] ?>">
                         </div>
                         <div class="form-group mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="<?php if (isset($_POST["email"])) echo $_POST["email"] ?>">
                         </div>
                         <div class="form-group mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Choose a password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Choose a password" value="<?php if(isset($_POST["password"])) echo $_POST["password"]?>">
                         </div>
                         <div class="form-group mb-3">
                             <label for="password2" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password">
+                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" value="<?php if(isset($_POST["password2"])) echo $_POST["password2"]?>">
                         </div>
     </form>
     </div>
@@ -118,9 +115,9 @@ individual files as needed -->
                         <?php include("login.php"); ?>
                         <div class="form-group mb-3">
                             <label for="loginEmail"></label>
-                            <input type="email" name="loginEmail" id="loginEmail" placeholder="Email" class="form-control" maxlength="40">
+                            <input type="email" name="loginEmail" id="loginEmail" placeholder="Email" class="form-control" maxlength="40" value="<?php if(isset($_POST["loginEmail"])) echo $_POST["loginEmail"]?>">
                             <label for="loginPassword"></label>
-                            <input type="password" name="loginPassword" placeholder="Password" class="form-control" maxlength="40">
+                            <input type="password" name="loginPassword" id="loginPassword" placeholder="Password" class="form-control" maxlength="40" value="<?php if(isset($_POST["loginPassword"])) echo $_POST["loginPassword"]?>">
                         </div>
                         <div class="checkbox">
                             <label for="rememberMe">
@@ -141,7 +138,7 @@ individual files as needed -->
             </div>
         </div>
     </form>
-    
+
     <!-- forgot password form -->
     <form method="post" class="form-group">
         <div class="modal fade" id="thirdModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
@@ -166,7 +163,7 @@ individual files as needed -->
             </div>
         </div>
     </form>
-    
+
     <!-- footer -->
     <div class="footer">
         <div class="container-fluid">Copyright &copy; <?php $today = date("Y");
